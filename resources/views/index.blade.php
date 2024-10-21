@@ -1,11 +1,7 @@
-<i>Hello
-    Mum
-    I'm Blessing
-    The
-    name is</i>
+<i>Hello, I'm Blessing the name is</i>
 
 @isset($name)
-Mon nom est: {{$name}}
+ {{$name}}
 @endisset
 
 <h1>List of tasks</h1>
