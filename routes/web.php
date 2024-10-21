@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Response;
 use Laravel\Prompts\Concerns\Fallback;
 
 
@@ -67,11 +68,23 @@ Route::get('/hallo', function(){
 Route::get('/', function () use ($tasks) {
     return view('index', [
          'tasks'=>$tasks,
+
+    ]);
+});
+
+Route::get('/tasks', function() use ($tasks){
+    return view('index', [
+        'tasks'=> $tasks
     ]);
 })->name('tasks.index');
 
-Route::get('/{id}', function () use ($tasks) {
-    return 'One single tasks';
+Route::get('/tasks/{id}', function ($id) use ($tasks) {
+    $task= collect($tasks)->firstWhere('id',$id);
+
+    if(!$task){
+        abort(Response::HTTP_NOT_FOUND);
+    }
+    return view('show', ['task'=>$task]);
 })->name('tasks.show');
 
 
