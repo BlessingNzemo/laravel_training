@@ -160,11 +160,13 @@ Route::delete('/tasks/{task}', function(Task $task) {
     return redirect()->route('tasks.index')->with('success','Task deleted with success !');
 })->name('tasks.destroy');
 
-Route::put('task/{id}/toggle-complete',function (Task $task){
-    $task->completed =!$task->completed;
-    $task->save();
+Route::put('tasks/{task}/toggle-complete',function (Task $task){
+   $task->toogleComplete();
+
     return redirect()->back()->with('succes','Task Completed!');
-});
+})->name('tasks.toggle-complete');
+
+
 Route::fallback( function(){
     return 'Cette route est inexistante';
 });
