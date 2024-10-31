@@ -11,7 +11,7 @@ class TaskRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,6 +28,6 @@ class TaskRequest extends FormRequest
                 'description'=>'required',
                 'long_description'=>'required',
             ];
-
+            
     }
 }
