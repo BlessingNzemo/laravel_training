@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('title', $task->title)
 
 @section('content')
@@ -25,7 +26,7 @@
 
         <div class="flex gap-2">
 
-                
+
 
                 <a href="{{ route('tasks.edit', ['task' => $task]) }}" class="btn">Edit</a>
 

@@ -36,7 +36,7 @@
             @enderror
         </div>
 
-        <div>
+        <div class="flex gap-2 items-center">
             <button class="btn" type="submit">
                 @isset($task)
                     Update Task
@@ -44,6 +44,7 @@
                     Add Task
                 @endisset
             </button>
+            <a href="{{ route('tasks.index') }}" class="link">Cancel</a>
         </div>
     </form>
 @endsection
