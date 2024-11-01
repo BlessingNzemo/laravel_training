@@ -2,9 +2,11 @@
  @section('title', 'The List of Tasks')
 
  @section('content')
- <div>
-    <a href="{{route('tasks.create')}}">Add Task</p>
- </div>
+
+
+ <nav class="mb-4">
+    <a href="{{route('tasks.create')}}" class="font-mrdium text-gray-700 underline decoration-pink-500">Add Task</a>
+    </nav>
 @isset($name)
     {{ $name }}
 @endisset
@@ -13,14 +15,18 @@
 {{-- @if (count($tasks)) --}}
 @forelse ($tasks as $task)
     <div>
-        <a href ="{{ route('tasks.show', ['task' => $task->id]) }}">{{ $task->title }}</a>
+        <a href="{{ route('tasks.show', ['task' => $task->id]) }}"
+           @class(['font-bold', 'line-through' => $task->completed])>
+            {{ $task->title }}
+        </a>
     </div>
 
 @empty
     <div>There are no tasks</div>
+
 @endforelse
 @if ($tasks->count())
-    <nav>
+    <nav class="mb-4">
         {{ $tasks->links() }}
     </nav>
 @endif
