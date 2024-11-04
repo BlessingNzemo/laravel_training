@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
  @section('title', 'The List of Tasks')
 
  @section('content')
@@ -30,3 +31,5 @@
         {{ $tasks->links() }}
     </nav>
 @endif
+
+@endsection
